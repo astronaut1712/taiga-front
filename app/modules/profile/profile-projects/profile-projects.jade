@@ -3,37 +3,36 @@ section.profile-projects
          div.spin
             img(src="/svg/spinner-circle.svg", alt="Loading...")
 
-    div.empty-tab(ng-if="vm.projects && !vm.projects.size")
+    .empty-tab(ng-if="vm.projects && !vm.projects.size")
         include ../../../svg/hide.svg
 
         p(translate="USER.PROFILE.PROJECTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")
 
-    div.project-list-single(tg-repeat="project in vm.projects")
-        div.project-list-single-left
+    .list-itemtype-project(tg-repeat="project in vm.projects")
+        .list-itemtype-project-left
 
-            div.project-list-single-title
-                h1
+            .project-list-single-title
+                h2
                     a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{::project.get('name')}}
                 p {{ ::project.get('description') | limitTo:300 }}
 
-            div.project-list-single-tags.tags-container(ng-if="::project.get('tags').size")
+            .list-itemtype-project-tags.tags-container(ng-if="::project.get('tags').size")
                 span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::project.get('colorized_tags')")
                     span.tag-name {{::tag.get('name')}}
 
-        div.project-list-single-right
+        .list-itemtype-project-right
+            
+            .list-itemtype-track
+                span.list-itemtype-track-likers
+                    span.icon
+                        include ../../../svg/like.svg
+                    span 56
 
-            div.project-list-single-members
+                span.list-itemtype-track-watchers
+                    span.icon
+                        include ../../../svg/watch.svg
+                    span 11
+                    
+            .list-itemtype-project-members
                 a(tg-repeat="contact in ::project.get('contacts')", tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name')}}")
                     img(ng-src="{{::contact.get('photo')}}")
-
-        // div.project-list-single-right
-        //     div.project-list-single-stats
-        //         div.stat-comments(title="2 comments")
-        //             span.icon.icon-comment
-        //             span.stat-num 2
-        //         div.stat-favorite.active(title="2 favorites")
-        //             span.icon.icon-star-fill
-        //             span.stat-num 4
-        //         div.stat-viewer(title="2 followers")
-        //             span.icon.icon-open-eye
-        //             span.stat-num 4

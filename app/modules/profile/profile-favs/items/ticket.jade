@@ -1,15 +1,15 @@
-div.profile-ticket-fav
-    a.profile-tickets-avatar(href="", ng-if="::vm.item.get('assigned_to')",
+div.list-itemtype-ticket
+    a.list-itemtype-avatar(href="", ng-if="::vm.item.get('assigned_to')",
                              tg-nav="user-profile:username=vm.item.get('assigned_to_username')",
                              title="{{ ::vm.item.get('assigned_to_full_name') }}")
         img(ng-src="{{ ::vm.item.get('assigned_to_photo') }}",
             alt="{{ ::vm.item.get('assigned_to_full_name') }}")
 
-    a.profile-tickets-avatar(href="", ng-if="::!vm.item.get('assigned_to')",
+    a.list-itemtype-avatar(href="", ng-if="::!vm.item.get('assigned_to')",
                              title="{{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED'|translate }}")
         img(src="/images/unnamed.png", alt="{{ 'COMMON.ASSIGNED_TO.NOT_ASSIGNED'|translate }}")
 
-    div.profile-tickets-data
+    div.list-itemtype-ticket-data
         p
             span.ticket-project {{:: vm.item.get('project_name') }}
             span.ticket-type(ng-if="::vm.item.get('type') === 'userstory'", translate="COMMON.USER_STORY")
@@ -32,13 +32,13 @@ div.profile-ticket-fav
                     title="#{{ ::vm.item.get('ref') }} {{ ::vm.item.get('subject') }}")
                 | {{ ::vm.item.get('subject') }}
 
-    div.profile-tickets-track
-        span.profile-project-likers(ng-class="{'active': vm.item.get('is_voted')}", title="{{ 'LIKES_COUNTER.TITLE'|translate:'{total:vm.item.get(\"total_votes\")}' }}")
+    div.list-itemtype-track
+        span.list-itemtype-track-likers(ng-class="{'active': vm.item.get('is_voted')}", title="{{ 'LIKES_COUNTER.TITLE'|translate:'{total:vm.item.get(\"total_votes\")}' }}")
             span.icon
                 include ../../../../svg/like.svg
             span {{ ::vm.item.get('total_votes') }}
 
-        span.profile-project-watchers(ng-class="{'active': vm.item.get('is_watched')}")
+        span.list-itemtype-track-watchers(ng-class="{'active': vm.item.get('is_watched')}")
             span.icon
                 include ../../../../svg/watch.svg
             span {{ ::vm.item.get('total_watchers') }}

@@ -6,14 +6,12 @@ class LikeButtonController
 
     constructor: (@confirm, @likeButtonService)->
         @.isMouseOver = false
-        @._changeOnMouseOver = true
 
     showTextWhenMouseIsOver: ->
-        @.isMouseOver = true if @._changeOnMouseOver
+        @.isMouseOver = true
 
     showTextWhenMouseIsOut: ->
         @.isMouseOver = false
-        @._changeOnMouseOver = true
 
     toggleLike: ->
         if not @.project.get("is_liked")
@@ -21,8 +19,7 @@ class LikeButtonController
         else
             @._unlike()
 
-        @.isMouseOver = false
-        @._changeOnMouseOver = false
+        @.showTextWhenMouseIsOut()
 
     _like: ->
         return @likeButtonService.like(@.project.get('id')).catch () =>

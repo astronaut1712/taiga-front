@@ -16,9 +16,6 @@
             }
         }
     }
-    .list-itemtype-track-likers {
-        margin-right: .5rem;
-    }
     .icon {
         svg {
             max-width: 1rem;
@@ -34,7 +31,7 @@
     @include list-itemtype-track;
     border-bottom: 1px solid $whitish;
     display: flex;
-    padding: 1rem;
+    padding: .5rem;
     padding-right: 0;
     h2 {
         @extend %normal;

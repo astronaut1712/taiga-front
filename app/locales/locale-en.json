@@ -746,6 +746,7 @@
         },
         "LIKE_BUTTON": {
             "LIKE": "Like",
+            "LIKED": "Liked",
             "UNLIKE": "Unlike",
             "BUTTON_TITLE": "Like or unlike this project",
             "COUNTER_TITLE": "Number of likes for this project"

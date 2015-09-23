@@ -41,6 +41,18 @@
             }
         }
     }
+    &.is-unliked {
+        .track-inner {
+            background: $red;
+            color: $whitish;
+            transition: background .3s;
+        }
+        .track-icon {
+            path {
+                fill: $red-light;
+            }
+        }
+    }
     &.watch-container {
         margin-right: 1rem;
         position: relative;

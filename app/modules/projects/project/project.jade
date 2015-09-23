@@ -5,13 +5,32 @@ div.wrapper
             div.intro-options
                 h1
                     span.project-name {{::vm.project.get("name")}}
-                    span.private(ng-if="::vm.project.get('is_private')",
-                                 title="{{'PROJECT.PRIVATE' | translate}}")
+                    span.private(
+                        ng-if="::vm.project.get('is_private')"
+                        title="{{'PROJECT.PRIVATE' | translate}}"
+                    )
                         include ../../../svg/lock.svg
 
-                div.track-buttons-container
+                div.track-buttons-container(ng-if="vm.user")
                     tg-like-button(project="vm.project")
-                    tg-watch-button(project="vm.project", ng-mouseleave="vm.toggleWatcherOptions()")
+                    tg-watch-button(
+                        project="vm.project"
+                        ng-mouseleave="vm.toggleWatcherOptions()"
+                    )
+                
+                div.track-container
+                    .list-itemtype-track(ng-if="!vm.user")
+                        span.list-itemtype-track-likers(
+                            title="{{'LIKES_COUNTER.TITLE'|translate:'{total:vm.project.get(\"total_votes\")}' }}"
+                        )
+                            span.icon
+                                include ../../../svg/like.svg
+                            span {{ ::vm.project.get('total_votes') }}
+
+                        span.list-itemtype-track-watchers
+                            span.icon
+                                include ../../../svg/watch.svg
+                            span {{ ::vm.project.get('total_watchers') }}
 
             p.description {{vm.project.get('description')}}
 
@@ -30,9 +49,11 @@ div.wrapper
                     a(tg-nav="user-profile:username=member.get('username')",
                       title="{{::member.get('full_name')}}")
                         img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
-
-                // h2.title Organizations
-                // div.involved-organization
-                //     a(href="", title="User Name")
-                //         img(src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg",
-                //             alt="{{member.full_name}}")
+            //-
+                h2.title Organizations
+                div.involved-organization
+                     a(href="", title="User Name")
+                        img(
+                             src="https://s3.amazonaws.com/uifaces/faces/twitter/dan_higham/48.jpg"
+                             alt="{{member.full_name}}"
+                        )

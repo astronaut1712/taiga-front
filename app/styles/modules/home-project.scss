@@ -22,6 +22,9 @@
     .like-watch-container {
         margin-left: auto;
     }
+    .track-container {
+        @include list-itemtype-track;
+    }
     .description {
         @extend %light;
         @extend %medium;

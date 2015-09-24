@@ -1,5 +1,12 @@
 class VoteButtonController
     constructor: ->
+        @.isMouseOver = false
+
+    showTextWhenMouseIsOver: ->
+        @.isMouseOver = true
+
+    showTextWhenMouseIsLeave: ->
+        @.isMouseOver = false
 
     toggleVote: ->
         if not @.item.is_voted
@@ -8,7 +15,8 @@ class VoteButtonController
             @._downvote()
 
     _upvote: ->
-        @.onUpvote()
+        @.onUpvote().then () =>
+            @.showTextWhenMouseIsLeave()
 
     _downvote: ->
         @.onDownvote()

@@ -5,8 +5,8 @@ describe "VoteButton", ->
 
     _mocks = ->
         mocks = {
-            onUpvote: sinon.spy()
-            onDownvote: sinon.spy()
+            onUpvote: sinon.stub(),
+            onDownvote: sinon.stub()
         }
 
     _inject = (callback) ->
@@ -24,11 +24,14 @@ describe "VoteButton", ->
 
     it "upvote", ->
         $scope = $rootScope.$new()
+
         ctrl = $controller("VoteButton", $scope, {
             item: {is_voted: false}
             onUpvote: mocks.onUpvote
             onDownvote: mocks.onDownvote
         })
+
+        mocks.onUpvote.withArgs().promise().resolve()
 
         ctrl.toggleVote()
 
@@ -36,11 +39,14 @@ describe "VoteButton", ->
 
     it "downvote", ->
         $scope = $rootScope.$new()
+
         ctrl = $controller("VoteButton", $scope, {
             item: {is_voted: true}
             onUpvote: mocks.onUpvote
             onDownvote: mocks.onDownvote
         })
+
+        mocks.onDownvote.withArgs().promise().resolve()
 
         ctrl.toggleVote()
 

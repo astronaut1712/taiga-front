@@ -157,9 +157,10 @@
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
+            "UPVOTED": "Upvoted",
             "DOWNVOTE": "Downvote",
-            "BUTTON_TITLE": "Upvote/Downvote this",
-            "COUNTER_TITLE": "Number of votes for this"
+            "BUTTON_TITLE": "Upvote/Downvote thisi item",
+            "COUNTER_TITLE": "Number of votes for this item"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",

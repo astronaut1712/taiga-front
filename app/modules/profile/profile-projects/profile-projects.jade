@@ -6,33 +6,47 @@ section.profile-projects
     .empty-tab(ng-if="vm.projects && !vm.projects.size")
         include ../../../svg/hide.svg
 
-        p(translate="USER.PROFILE.PROJECTS_EMPTY", translate-values="{username: vm.user.get('full_name_display')}")
+        p(
+            translate="USER.PROFILE.PROJECTS_EMPTY"
+            translate-values="{username: vm.user.get('full_name_display')}"
+        )
 
     .list-itemtype-project(tg-repeat="project in vm.projects")
         .list-itemtype-project-left
 
             .project-list-single-title
                 h2
-                    a(href="#", tg-nav="project:project=project.get('slug')", title="{{ ::project.get('name') }}") {{::project.get('name')}}
+                    a(
+                        href="#"
+                        tg-nav="project:project=project.get('slug')"
+                        title="{{ ::project.get('name') }}"
+                    ) {{::project.get('name')}}
                 p {{ ::project.get('description') | limitTo:300 }}
 
             .list-itemtype-project-tags.tags-container(ng-if="::project.get('tags').size")
-                span.tag(style='border-left: 5px solid {{::tag.get("color")}};', tg-repeat="tag in ::project.get('colorized_tags')")
+                span.tag(
+                    style='border-left: 5px solid {{::tag.get("color")}};'
+                    tg-repeat="tag in ::project.get('colorized_tags')"
+                )
                     span.tag-name {{::tag.get('name')}}
 
         .list-itemtype-project-right
-            
+
             .list-itemtype-track
-                span.list-itemtype-track-likers
+                span.list-itemtype-track-likers(ng-class="{'active': project.get('is_liked')}")
                     span.icon
                         include ../../../svg/like.svg
-                    span {{ ::project.get('total_votes') }}
+                    span {{ ::project.get('likes') }}
 
-                span.list-itemtype-track-watchers
+                span.list-itemtype-track-watchers(ng-class="{'active': project.get('is_watched')}")
                     span.icon
                         include ../../../svg/watch.svg
-                    span {{ ::project.get('total_watchers') }}
-                    
+                    span {{ ::project.get('watchers').count() }}
+
             .list-itemtype-project-members
-                a(tg-repeat="contact in ::project.get('contacts')", tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name')}}")
+                a(
+                    tg-repeat="contact in ::project.get('contacts')"
+                    tg-nav="user-profile:username=contact.get('username')"
+                    title="{{::contact.get('full_name')}}"
+                )
                     img(ng-src="{{::contact.get('photo')}}")

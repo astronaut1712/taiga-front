@@ -18,8 +18,8 @@ div.wrapper
                         ng-mouseleave="vm.toggleWatcherOptions()"
                     )
                 
-                div.track-container
-                    .list-itemtype-track(ng-if="!vm.user")
+                div.track-container(ng-if="!vm.user")
+                    .list-itemtype-track
                         span.list-itemtype-track-likers(
                             title="{{'LIKES_COUNTER.TITLE'|translate:'{total:vm.project.get(\"total_votes\")}' }}"
                         )

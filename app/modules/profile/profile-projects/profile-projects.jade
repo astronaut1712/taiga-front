@@ -26,12 +26,12 @@ section.profile-projects
                 span.list-itemtype-track-likers
                     span.icon
                         include ../../../svg/like.svg
-                    span 56
+                    span {{ ::project.get('total_votes') }}
 
                 span.list-itemtype-track-watchers
                     span.icon
                         include ../../../svg/watch.svg
-                    span 11
+                    span {{ ::project.get('total_watchers') }}
                     
             .list-itemtype-project-members
                 a(tg-repeat="contact in ::project.get('contacts')", tg-nav="user-profile:username=contact.get('username')", title="{{::contact.get('full_name')}}")

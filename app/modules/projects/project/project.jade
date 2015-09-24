@@ -17,38 +17,41 @@ div.wrapper
                         project="vm.project"
                         ng-mouseleave="vm.closeWatcherOptions()"
                     )
-                
+
                 div.track-container(ng-if="!vm.user")
                     .list-itemtype-track
-                        span.list-itemtype-track-likers(
-                            title="{{'LIKES_COUNTER.TITLE'|translate:'{total:vm.project.get(\"total_votes\")}' }}"
-                        )
+                        span.list-itemtype-track-likers
                             span.icon
                                 include ../../../svg/like.svg
-                            span {{ ::vm.project.get('total_votes') }}
+                            span {{ ::vm.project.get('likes') }}
 
                         span.list-itemtype-track-watchers
                             span.icon
                                 include ../../../svg/watch.svg
-                            span {{ ::vm.project.get('total_watchers') }}
+                            span {{ ::vm.project.get('watchers').count() }}
 
             p.description {{vm.project.get('description')}}
 
             div.single-project-tags.tags-container(ng-if="::vm.project.get('tags').size")
-                span.tag(style='border-left: 5px solid {{::tag.get("color")}};',
-                         tg-repeat="tag in ::vm.project.get('colorized_tags')")
+                span.tag(
+                    style='border-left: 5px solid {{::tag.get("color")}};',
+                    tg-repeat="tag in ::vm.project.get('colorized_tags')"
+                )
                     span.tag-name {{::tag.get('name')}}
 
         div.project-data
             section.timeline(ng-if="vm.project")
                 div(tg-user-timeline, projectId="vm.project.get('id')")
+
             section.involved-data
                 h2.title {{"PROJECT.SECTION.TEAM" | translate}}
                 ul.involved-team
-                  li(tg-repeat="member in vm.members")
-                    a(tg-nav="user-profile:username=member.get('username')",
-                      title="{{::member.get('full_name')}}")
-                        img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
+                    li(tg-repeat="member in vm.members")
+                        a(
+                            tg-nav="user-profile:username=member.get('username')",
+                            title="{{::member.get('full_name')}}"
+                        )
+                            img(ng-src="{{::member.get('photo')}}", alt="{{::member.get('full_name')}}")
             //-
                 h2.title Organizations
                 div.involved-organization

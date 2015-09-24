@@ -53,23 +53,29 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
         tg-attachments(ng-model="us", type="us")
         tg-history(ng-model="us", type="us")
 
-    sidebar.menu-secondary.sidebar
-        section.us-status
-            h1(tg-us-status-display, ng-model="us")
-            div.us-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
-            tg-created-by-display.us-created-by(ng-model="us")
+    sidebar.menu-secondary.sidebar.ticket-data
+        section
+            div.ticket-title(tg-us-status-display, ng-model="us")
+
+            tg-created-by-display.ticket-created-by(ng-model="us")
+            
+            //div.ticket-detail-progress-bar(tg-us-tasks-progress-display, ng-model="tasks")
+            
+            div.ticket-data-container
+                div.ticket-status(tg-us-status-button, ng-model="us")
+
+        section.ticket-estimation
             tg-us-estimation(ng-model="us")
-            div.duty-data-container
-                div.duty-data(tg-us-status-button, ng-model="us")
 
-        section.duty-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
+        section.ticket-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
+        
+        section.track-buttons-container.ticket-track-buttons
+            div.like-button
+                tg-vote-button(item="us", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
 
-        section.vote
-            tg-vote-button(item="us", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
+            div.ticket-watchers(tg-watchers, ng-model="us", required-perm="modify_us")
 
-        section.watchers(tg-watchers, ng-model="us", required-perm="modify_us")
-
-        section.us-detail-settings
+        section.ticket-detail-settings
             tg-us-team-requirement-button(ng-model="us")
             tg-us-client-requirement-button(ng-model="us")
             tg-block-button(tg-check-permission="modify_us", ng-model="us")

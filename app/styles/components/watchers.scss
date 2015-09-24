@@ -1,21 +1,34 @@
-.watchers {
+.ticket-watchers {
     margin-top: 1rem;
-    .watchers-header {
-        border-bottom: 2px solid $gray-light;
-        padding: .5rem;
+    .ticket-watchers-btn {
+        align-items: stretch;
+        background: rgba($gray-light, .2);
+        display: flex;
+        justify-content: space-between;
         position: relative;
-        .title {
-            @extend %large;
-            @extend %title;
-            text-transform: uppercase;
+        &:hover {
+            background: darken($whitish, 5%);
+            color: currentcolor;
+            transition: background .3s;
         }
         .icon {
-            @extend %large;
-            position: absolute;
-            right: 1rem;
+            margin-right: .5rem;
+        }
+        .watchers-title {
+            @extend %light;
+            margin-right: .25rem;
+            padding: .5rem 1rem;
+            text-transform: uppercase;
         }
         &.no-watchers {
             border-bottom: 0;
+        }
+        .ticket-watchers-num {
+            align-items: center;
+            background: $gray-light;
+            color: $white;
+            display: flex;
+            padding: .5rem .75rem;
         }
     }
     .watcher-single {

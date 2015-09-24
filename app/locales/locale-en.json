@@ -838,7 +838,7 @@
         "SECTION_NAME": "User story details",
         "LINK_TASKBOARD": "Taskboard",
         "TITLE_LINK_TASKBOARD": "Go to the taskboard",
-        "TOTAL_POINTS": "total",
+        "TOTAL_POINTS": "total points",
         "ADD": "+ Add a new User Story",
         "ADD_BULK": "Add some new User Stories in bulk",
         "PROMOTED": "This US has been promoted from Issue:",

@@ -15,6 +15,7 @@ a.track-button.watch-button.watch-container(
 
 ul.watch-options(
     ng-class="{'hidden': !vm.showWatchOptions}"
+    ng-mouseleave="vm.closeWatcherOptions()"
 )
     //- NOTIFY LEVEL CHOICES:
     //-   1 - Only involved

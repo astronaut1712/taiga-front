@@ -16,11 +16,11 @@ class WatchButtonController
     watch: (notifyLevel) ->
         return @watchButtonService.watch(@.project.get('id'), notifyLevel)
             .catch () => @confirm.notify("error")
-            .finally () => @.showWatchOptions = false
+            .finally () => @.closeWatcherOptions()
 
     unwatch: ->
         return @watchButtonService.unwatch(@.project.get('id'))
             .catch () => @confirm.notify("error")
-            .finally () => @.showWatchOptions = false
+            .finally () => @.closeWatcherOptions()
 
 angular.module("taigaComponents").controller("WatchButton", WatchButtonController)

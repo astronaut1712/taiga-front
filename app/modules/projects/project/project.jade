@@ -13,10 +13,7 @@ div.wrapper
 
                 div.track-buttons-container(ng-if="vm.user")
                     tg-like-button(project="vm.project")
-                    tg-watch-button(
-                        project="vm.project"
-                        ng-mouseleave="vm.closeWatcherOptions()"
-                    )
+                    tg-watch-button(project="vm.project")
 
                 div.track-container(ng-if="!vm.user")
                     .list-itemtype-track

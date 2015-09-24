@@ -4,7 +4,7 @@ a.track-button.like-button.like-container(
     ng-click="vm.toggleLike()"
     ng-class="{'active':vm.project.get('is_liked'), 'is-unliked':vm.project.get('is_liked') && vm.isMouseOver}"
     ng-mouseover="vm.showTextWhenMouseIsOver()"
-    ng-mouseleave="vm.showTextWhenMouseIsOut()"
+    ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
     span.track-inner
         span.track-icon

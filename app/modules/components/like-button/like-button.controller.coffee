@@ -10,7 +10,7 @@ class LikeButtonController
     showTextWhenMouseIsOver: ->
         @.isMouseOver = true
 
-    showTextWhenMouseIsOut: ->
+    showTextWhenMouseIsLeave: ->
         @.isMouseOver = false
 
     toggleLike: ->
@@ -19,11 +19,12 @@ class LikeButtonController
         else
             @._unlike()
 
-        @.showTextWhenMouseIsOut()
-
     _like: ->
-        return @likeButtonService.like(@.project.get('id')).catch () =>
-            @confirm.notify("error")
+        return @likeButtonService.like(@.project.get('id'))
+            .then () =>
+                @.showTextWhenMouseIsLeave()
+            .catch () =>
+                @confirm.notify("error")
 
     _unlike: ->
         return @likeButtonService.unlike(@.project.get('id')).catch () =>

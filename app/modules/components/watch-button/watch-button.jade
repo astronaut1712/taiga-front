@@ -1,7 +1,8 @@
-a.track-button.watch-button.watch-container(href="",
-                                            title="{{ 'PROJECT.WATCH_BUTTON.BUTTON_TITLE' | translate }}",
-                                            ng-click="vm.toggleWatcherOptions()",
-                                            ng-class="{'active': vm.project.get('is_watched')}")
+a.track-button.watch-button.watch-container(
+    href="", title="{{ 'PROJECT.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
+    ng-click="vm.toggleWatcherOptions()"
+    ng-class="{'active': vm.project.get('is_watched')}"
+)
     span.track-inner
         span.track-icon
             include ../../../svg/watch.svg
@@ -12,7 +13,9 @@ a.track-button.watch-button.watch-container(href="",
     span.track-button-counter(title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE' | translate }}") {{ vm.project.get('watchers').size }}
 
 
-ul.watch-options(ng-class="{'hidden': !vm.showWatchOptions}")
+ul.watch-options(
+    ng-class="{'hidden': !vm.showWatchOptions}"
+)
     //- NOTIFY LEVEL CHOICES:
     //-   1 - Only involved
     //-   2 - Receive all

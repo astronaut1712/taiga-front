@@ -10,6 +10,9 @@ class WatchButtonController
     toggleWatcherOptions: () ->
         @.showWatchOptions = !@.showWatchOptions
 
+    closeWatcherOptions: () ->
+        @.showWatchOptions = false
+
     watch: (notifyLevel) ->
         return @watchButtonService.watch(@.project.get('id'), notifyLevel)
             .catch () => @confirm.notify("error")

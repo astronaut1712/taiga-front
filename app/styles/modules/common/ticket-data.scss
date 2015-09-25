@@ -228,9 +228,7 @@
         }
     }
     .button-red {
-        &:hover,
-        &.active {
-            background: $red;
-        }
+        display: block;
+        margin-top: 2rem;
     }
 }

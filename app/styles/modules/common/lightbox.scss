@@ -465,32 +465,6 @@
         flex-grow: 0;
         width: 600px;
     }
-    .watchers {
-        margin-top: 1rem;
-        min-height: 440px;
-
-        .watcher-name {
-            flex-grow: 12;
-        }
-    }
-    .watcher-single {
-        position: relative;
-        &:hover,
-        &.active {
-            background: lighten($primary, 55%);
-            cursor: pointer;
-        }
-        &:hover {
-            transition: background .3s linear;
-        }
-        &.active {
-            .icon {
-                opacity: 1;
-                right: 1rem;
-                top: 1.3rem;
-            }
-        }
-    }
     .more-watchers {
         @extend %title;
         @extend %medium;

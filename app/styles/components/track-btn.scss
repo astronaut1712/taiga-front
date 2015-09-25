@@ -40,14 +40,12 @@
                 fill: $primary;
             }
         }
-    }
-    &.is-unliked {
-        .track-inner {
-            background: $red;
-            color: $whitish;
-            transition: background .3s;
-        }
-        .track-icon {
+        &:hover {
+            .track-inner {
+                background: $red;
+                color: $whitish;
+                transition: background .3s;
+            }
             path {
                 fill: $red-light;
             }

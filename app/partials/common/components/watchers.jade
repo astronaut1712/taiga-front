@@ -1,20 +1,21 @@
-<% if(isEditable){ %>
-a.ticket-watchers-btn(href="")
-    .watchers-title
-        span.icon.icon-eye
-        span(translate="COMMON.WATCHERS.TITLE")
-    .ticket-watchers-num 56
-<% } else if(watchers.length > 0){ %>
-.watchers-header
-    .watchers-title(translate="COMMON.WATCHERS.TITLE")
-<% }; %>
+//-
+    <% if(isEditable){ %>
+    a.ticket-watchers-btn(href="")
+        .watchers-title
+            span.icon.icon-eye
+            span(translate="COMMON.WATCHERS.TITLE")
+        .ticket-watchers-num 56
+    <% } else if(watchers.length > 0){ %>
+    .watchers-header
+        .watchers-title(translate="COMMON.WATCHERS.TITLE")
+    <% }; %>
 
 <% _.each(watchers, function(watcher) { %>
 <% if(watcher) { %>
-.watcher-single
-    .watcher-avatar
+.user-list-single
+    .user-list-avatar
         img(src!="<%- watcher.photo %>" alt!="<%- watcher.full_name_display %>")
-    .watcher-name
+    .user-list-name
         span <%- watcher.full_name_display %>
 
         <% if(isEditable){ %>

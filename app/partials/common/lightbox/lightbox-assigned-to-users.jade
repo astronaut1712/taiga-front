@@ -1,12 +1,12 @@
 <% if (selected) { %>
-.assigned-to-single-active
-    .assigned-to-avatar
+.user-list-single.is-active
+    .user-list-avatar
         a(
             href=""
             title="{{'COMMON.ASSIGNED_TO' | translate}}"
         )
             img(src!="<%- selected.photo %>")
-    a.assigned-to-name(
+    a.user-list-name(
         href="" 
         title!="<%- selected.full_name_display %>"
     )
@@ -18,14 +18,14 @@
 <% } %>
 
 <% _.each(users, function(user) { %>
-.assigned-to-single(data-user-id!="<%- user.id %>")
-    .assigned-to-avatar
+.user-list-single(data-user-id!="<%- user.id %>")
+    .user-list-avatar
         a(
             href="#"
             title="{{'COMMON.ASSIGNED_TO.TITLE' | translate}}"
         )
             img(src!="<%- user.photo %>")
-    a.assigned-to-name(
+    a.user-list-name(
         href=""
         title!="<%- user.full_name_display %>"
     )

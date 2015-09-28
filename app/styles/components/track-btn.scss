@@ -69,12 +69,11 @@
         min-width: 2rem;
     }
 }
-
+.watch-button,
 .vote-button,
 .like-button {
     &.active {
-        &.downvote,
-        &.unlike {
+        &.is-hover {
             .track-inner {
                 background: $red;
                 color: $whitish;

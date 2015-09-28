@@ -155,11 +155,18 @@
             "DELETE": "Delete watcher",
             "TITLE_LIGHTBOX_DELETE_WARTCHER": "Delete watcher..."
         },
+        "WATCH_BUTTON": {
+            "WATCH": "Watch",
+            "WATCHING": "Watching",
+            "UNWATCH": "Unwatch",
+            "BUTTON_TITLE": "Watch/Unwatch this item",
+            "COUNTER_TITLE": "Number of watchers for this item"
+        },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
             "UPVOTED": "Upvoted",
             "DOWNVOTE": "Downvote",
-            "BUTTON_TITLE": "Upvote/Downvote thisi item",
+            "BUTTON_TITLE": "Upvote/Downvote this item",
             "COUNTER_TITLE": "Number of votes for this item"
         },
         "CUSTOM_ATTRIBUTES": {

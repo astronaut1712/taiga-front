@@ -63,6 +63,14 @@ resourceProvider = ($repo, $http, $urls, $storage, $q) ->
         url = $urls.resolve("issue-downvote", issueId)
         return $http.post(url)
 
+    service.watch = (issueId) ->
+        url = $urls.resolve("issue-watch", issueId)
+        return $http.post(url)
+
+    service.unwatch = (issueId) ->
+        url = $urls.resolve("issue-unwatch", issueId)
+        return $http.post(url)
+
     service.stats = (projectId) ->
         return $repo.queryOneRaw("projects", "#{projectId}/issues_stats")
 

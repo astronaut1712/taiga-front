@@ -91,6 +91,8 @@ urls = {
     "userstories-filters": "/userstories/filters_data"
     "userstory-upvote": "/userstories/%s/upvote"
     "userstory-downvote": "/userstories/%s/downvote"
+    "userstory-watch": "/userstories/%s/watch"
+    "userstory-unwatch": "/userstories/%s/unwatch"
 
     # Tasks
     "tasks": "/tasks"
@@ -98,6 +100,8 @@ urls = {
     "bulk-update-task-taskboard-order": "/tasks/bulk_update_taskboard_order"
     "task-upvote": "/tasks/%s/upvote"
     "task-downvote": "/tasks/%s/downvote"
+    "task-watch": "/tasks/%s/watch"
+    "task-unwatch": "/tasks/%s/unwatch"
 
     # Issues
     "issues": "/issues"
@@ -105,6 +109,8 @@ urls = {
     "issues-filters": "/issues/filters_data"
     "issue-upvote": "/issues/%s/upvote"
     "issue-downvote": "/issues/%s/downvote"
+    "issue-watch": "/issues/%s/watch"
+    "issue-unwatch": "/issues/%s/unwatch"
 
     # Wiki pages
     "wiki": "/wiki"

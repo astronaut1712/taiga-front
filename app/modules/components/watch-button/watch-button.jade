@@ -1,0 +1,27 @@
+a.track-button.watch-button.watch-container(
+    href=""
+    title="{{ 'COMMON.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
+    ng-click="vm.toggleWatch()"
+    ng-class="{'active': vm.item.is_watched, 'is-hover': vm.item.is_watched && vm.isMouseOver}"
+    ng-mouseover="vm.showTextWhenMouseIsOver()"
+    ng-mouseleave="vm.showTextWhenMouseIsLeave()"
+)
+
+    span.track-inner
+        span.track-icon
+            include ../../../svg/watch.svg
+        span(
+            ng-if="!vm.item.is_watched",
+            translate="COMMON.WATCH_BUTTON.WATCH"
+        )
+        span(
+            ng-if="vm.item.is_watched && !vm.isMouseOver",
+            translate="COMMON.WATCH_BUTTON.WATCHING"
+        )
+        span(
+            ng-if="vm.item.is_watched && vm.isMouseOver",
+            translate="COMMON.WATCH_BUTTON.UNWATCH"
+        )
+
+    span.track-button-counter(title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE' | translate }}")
+        | {{ vm.item.watchers.length }}

@@ -207,6 +207,28 @@ class UserStoryDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return @rs.userstories.downvote(@scope.usId).then(onSuccess, onError)
 
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.watch(@scope.usId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadUs()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.userstories.unwatch(@scope.usId).then(onSuccess, onError)
+
 module.controller("UserStoryDetailController", UserStoryDetailController)
 
 

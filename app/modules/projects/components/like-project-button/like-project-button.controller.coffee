@@ -1,7 +1,7 @@
-class LikeButtonController
+class LikeProjectButtonController
     @.$inject = [
         "$tgConfirm"
-        "tgLikeButtonService"
+        "tgLikeProjectButtonService"
     ]
 
     constructor: (@confirm, @likeButtonService)->
@@ -30,4 +30,4 @@ class LikeButtonController
         return @likeButtonService.unlike(@.project.get('id')).catch =>
             @confirm.notify("error")
 
-angular.module("taigaComponents").controller("LikeButton", LikeButtonController)
+angular.module("taigaProjects").controller("LikeProjectButton", LikeProjectButtonController)

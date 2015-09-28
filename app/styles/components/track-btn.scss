@@ -74,22 +74,13 @@
 .vote-button,
 .like-button {
     &.active {
-        &:hover {
+        &.downvote,
+        &.unlike {
             .track-inner {
                 background: $red;
                 color: $whitish;
                 transition: background .3s;
             }
-            path {
-                fill: $red-light;
-            }
-        }
-    }
-}
-
-.vote-button {
-    &.active {
-        &:hover {
             path {
                 fill: $red-light;
             }

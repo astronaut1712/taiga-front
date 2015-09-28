@@ -1,6 +1,6 @@
 taiga = @.taiga
 
-class LikeButtonService extends taiga.Service
+class LikeProjectButtonService extends taiga.Service
     @.$inject = ["tgResources", "tgCurrentUserService", "tgProjectService"]
 
     constructor: (@rs, @currentUserService, @projectService) ->
@@ -49,4 +49,4 @@ class LikeButtonService extends taiga.Service
             @._updateProjects(projectId, false)
             @._updateCurrentProject(false)
 
-angular.module("taigaComponents").service("tgLikeButtonService", LikeButtonService)
+angular.module("taigaProjects").service("tgLikeProjectButtonService", LikeProjectButtonService)

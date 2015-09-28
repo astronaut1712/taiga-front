@@ -1,7 +1,7 @@
-class WatchButtonController
+class WatchProjectButtonController
     @.$inject = [
         "$tgConfirm"
-        "tgWatchButtonService"
+        "tgWatchProjectButtonService"
     ]
 
     constructor: (@confirm, @watchButtonService)->
@@ -23,4 +23,4 @@ class WatchButtonController
             .catch () => @confirm.notify("error")
             .finally () => @.closeWatcherOptions()
 
-angular.module("taigaComponents").controller("WatchButton", WatchButtonController)
+angular.module("taigaProjects").controller("WatchProjectButton", WatchProjectButtonController)

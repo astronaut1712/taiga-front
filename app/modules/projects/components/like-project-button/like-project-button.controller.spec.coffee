@@ -1,4 +1,4 @@
-describe "LikeButton", ->
+describe "LikeProjectButton", ->
     $provide = null
     $controller = null
     mocks = {}
@@ -10,20 +10,20 @@ describe "LikeButton", ->
 
         $provide.value("$tgConfirm", mocks.tgConfirm)
 
-    _mockTgLikeButton = ->
-        mocks.tgLikeButton = {
+    _mockTgLikeProjectButton = ->
+        mocks.tgLikeProjectButton = {
             like: sinon.stub(),
             unlike: sinon.stub()
         }
 
-        $provide.value("tgLikeButtonService", mocks.tgLikeButton)
+        $provide.value("tgLikeProjectButtonService", mocks.tgLikeProjectButton)
 
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
 
             _mockTgConfirm()
-            _mockTgLikeButton()
+            _mockTgLikeProjectButton()
 
             return null
 
@@ -36,7 +36,7 @@ describe "LikeButton", ->
         _inject()
 
     beforeEach ->
-        module "taigaComponents"
+        module "taigaProjects"
 
         _setup()
 
@@ -46,14 +46,14 @@ describe "LikeButton", ->
             is_liked: false
         })
 
-        ctrl = $controller("LikeButton")
+        ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeButton.like.withArgs(project.get('id')).promise().resolve()
+        mocks.tgLikeProjectButton.like.withArgs(project.get('id')).promise().resolve()
 
         ctrl.toggleLike()
 
-        expect(mocks.tgLikeButton.like).to.be.calledOnce
+        expect(mocks.tgLikeProjectButton.like).to.be.calledOnce
 
     it "toggleLike false -> true, notify error", (done) ->
         project = Immutable.fromJS({
@@ -61,10 +61,10 @@ describe "LikeButton", ->
             is_liked: false
         })
 
-        ctrl = $controller("LikeButton")
+        ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeButton.like.withArgs(project.get('id')).promise().reject()
+        mocks.tgLikeProjectButton.like.withArgs(project.get('id')).promise().reject()
 
         ctrl.toggleLike().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce
@@ -75,24 +75,24 @@ describe "LikeButton", ->
             is_liked: true
         })
 
-        ctrl = $controller("LikeButton")
+        ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeButton.unlike.withArgs(project.get('id')).promise().resolve()
+        mocks.tgLikeProjectButton.unlike.withArgs(project.get('id')).promise().resolve()
 
         ctrl.toggleLike()
 
-        expect(mocks.tgLikeButton.unlike).to.be.calledOnce
+        expect(mocks.tgLikeProjectButton.unlike).to.be.calledOnce
 
     it "toggleLike true -> false, notify error", (done) ->
         project = Immutable.fromJS({
             is_liked: true
         })
 
-        ctrl = $controller("LikeButton")
+        ctrl = $controller("LikeProjectButton")
         ctrl.project = project
 
-        mocks.tgLikeButton.unlike.withArgs(project.get('id')).promise().reject()
+        mocks.tgLikeProjectButton.unlike.withArgs(project.get('id')).promise().reject()
 
         ctrl.toggleLike().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce

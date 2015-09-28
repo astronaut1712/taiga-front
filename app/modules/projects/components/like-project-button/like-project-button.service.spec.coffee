@@ -1,13 +1,13 @@
-describe "tgWatchButtonService", ->
-    watchButtonService = null
+describe "tgLikeProjectButtonService", ->
+    likeButtonService = null
     provide = null
     mocks = {}
 
     _mockTgResources = () ->
         mocks.tgResources = {
             projects: {
-                watchProject: sinon.stub(),
-                unwatchProject: sinon.stub()
+                likeProject: sinon.stub(),
+                unlikeProject: sinon.stub()
             }
         }
 
@@ -16,29 +16,22 @@ describe "tgWatchButtonService", ->
     _mockTgCurrentUserService = () ->
         mocks.tgCurrentUserService = {
             setProjects: sinon.stub(),
-            getUser: () ->
-                return Immutable.fromJS({
-                    id: 89
-                })
             projects: Immutable.fromJS({
                 all: [
                     {
                         id: 4,
-                        watchers: [],
-                        is_watched: false,
-                        notify_level: null
+                        likes: 2,
+                        is_liked: false
                     },
                     {
                         id: 5,
-                        watchers: [89],
-                        is_watched: true,
-                        notify_level: 3
+                        likes: 7,
+                        is_liked: true
                     },
                     {
                         id: 6,
-                        watchers: [],
-                        is_watched: true,
-                        notify_level: null
+                        likes: 4,
+                        is_liked: true
                     }
                 ]
             })
@@ -54,8 +47,8 @@ describe "tgWatchButtonService", ->
         provide.value "tgProjectService", mocks.tgProjectService
 
     _inject = (callback) ->
-        inject (_tgWatchButtonService_) ->
-            watchButtonService = _tgWatchButtonService_
+        inject (_tgLikeProjectButtonService_) ->
+            likeButtonService = _tgLikeProjectButtonService_
             callback() if callback
 
     _mocks = () ->
@@ -70,21 +63,19 @@ describe "tgWatchButtonService", ->
         _mocks()
 
     beforeEach ->
-        module "taigaComponents"
+        module "taigaProjects"
         _setup()
         _inject()
 
-    it "watch", (done) ->
+    it "like", (done) ->
         projectId = 4
-        notifyLevel = 3
 
-        mocks.tgResources.projects.watchProject.withArgs(projectId, notifyLevel).promise().resolve()
+        mocks.tgResources.projects.likeProject.withArgs(projectId).promise().resolve()
 
         newProject = {
             id: 4,
-            watchers: [89],
-            is_watched: true,
-            notify_level: notifyLevel
+            likes: 3,
+            is_liked: true
         }
 
         mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 0])
@@ -102,22 +93,21 @@ describe "tgWatchButtonService", ->
         ), 'projectServiceCheckImmutable'
 
 
-        watchButtonService.watch(projectId, notifyLevel).finally () ->
+        likeButtonService.like(projectId).finally () ->
             expect(mocks.tgCurrentUserService.setProjects).to.have.been.calledWith(userServiceCheckImmutable)
             expect(mocks.tgProjectService.setProject).to.have.been.calledWith(projectServiceCheckImmutable)
 
             done()
 
-    it "unwatch", (done) ->
+    it "unlike", (done) ->
         projectId = 5
 
-        mocks.tgResources.projects.unwatchProject.withArgs(projectId).promise().resolve()
+        mocks.tgResources.projects.unlikeProject.withArgs(projectId).promise().resolve()
 
-        newProject = {
+        newProject =  {
             id: 5,
-            watchers: [],
-            is_watched: false,
-            notify_level: null
+            likes: 6,
+            is_liked: false
         }
 
         mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 1])
@@ -135,7 +125,7 @@ describe "tgWatchButtonService", ->
         ), 'projectServiceCheckImmutable'
 
 
-        watchButtonService.unwatch(projectId).finally () ->
+        likeButtonService.unlike(projectId).finally () ->
             expect(mocks.tgCurrentUserService.setProjects).to.have.been.calledWith(userServiceCheckImmutable)
             expect(mocks.tgProjectService.setProject).to.have.been.calledWith(projectServiceCheckImmutable)
 

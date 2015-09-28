@@ -2,7 +2,7 @@ a.track-button.vote-button.vote-container(
     href=""
     title="{{ 'COMMON.VOTE_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleVote()"
-    ng-class="{'active': vm.item.is_voted, 'is-unliked': vm.item.is_voted && vm.isMouseOver}"
+    ng-class="{'active': vm.item.is_voted, 'downvote': vm.item.is_voted && vm.isMouseOver}"
     ng-mouseover="vm.showTextWhenMouseIsOver()"
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )

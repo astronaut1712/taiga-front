@@ -1,4 +1,4 @@
-describe "WatchButton", ->
+describe "WatchProjectButton", ->
     $provide = null
     $controller = null
     mocks = {}
@@ -10,20 +10,20 @@ describe "WatchButton", ->
 
         $provide.value("$tgConfirm", mocks.tgConfirm)
 
-    _mockTgWatchButton = ->
-        mocks.tgWatchButton = {
+    _mockTgWatchProjectButton = ->
+        mocks.tgWatchProjectButton = {
             watch: sinon.stub(),
             unwatch: sinon.stub()
         }
 
-        $provide.value("tgWatchButtonService", mocks.tgWatchButton)
+        $provide.value("tgWatchProjectButtonService", mocks.tgWatchProjectButton)
 
     _mocks = ->
         module (_$provide_) ->
             $provide = _$provide_
 
             _mockTgConfirm()
-            _mockTgWatchButton()
+            _mockTgWatchProjectButton()
 
             return null
 
@@ -36,12 +36,12 @@ describe "WatchButton", ->
         _inject()
 
     beforeEach ->
-        module "taigaComponents"
+        module "taigaProjects"
 
         _setup()
 
     it "toggleWatcherOption", () ->
-        ctrl = $controller("WatchButton")
+        ctrl = $controller("WatchProjectButton")
 
         ctrl.toggleWatcherOptions()
 
@@ -57,14 +57,14 @@ describe "WatchButton", ->
             id: 3
         })
 
-        ctrl = $controller("WatchButton")
+        ctrl = $controller("WatchProjectButton")
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchButton.watch.withArgs(project.get('id'), notifyLevel).promise().resolve()
+        mocks.tgWatchProjectButton.watch.withArgs(project.get('id'), notifyLevel).promise().resolve()
 
         ctrl.watch(notifyLevel).finally () ->
-            expect(mocks.tgWatchButton.watch).to.be.calledOnce
+            expect(mocks.tgWatchProjectButton.watch).to.be.calledOnce
             expect(ctrl.showWatchOptions).to.be.false
 
             done()
@@ -75,11 +75,11 @@ describe "WatchButton", ->
             id: 3
         })
 
-        ctrl = $controller("WatchButton")
+        ctrl = $controller("WatchProjectButton")
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchButton.watch.withArgs(project.get('id'), notifyLevel).promise().reject()
+        mocks.tgWatchProjectButton.watch.withArgs(project.get('id'), notifyLevel).promise().reject()
 
         ctrl.watch(notifyLevel).finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce
@@ -92,14 +92,14 @@ describe "WatchButton", ->
             id: 3
         })
 
-        ctrl = $controller("WatchButton")
+        ctrl = $controller("WatchProjectButton")
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchButton.unwatch.withArgs(project.get('id')).promise().resolve()
+        mocks.tgWatchProjectButton.unwatch.withArgs(project.get('id')).promise().resolve()
 
         ctrl.unwatch().finally () ->
-            expect(mocks.tgWatchButton.unwatch).to.be.calledOnce
+            expect(mocks.tgWatchProjectButton.unwatch).to.be.calledOnce
             expect(ctrl.showWatchOptions).to.be.false
 
             done()
@@ -109,11 +109,11 @@ describe "WatchButton", ->
             id: 3
         })
 
-        ctrl = $controller("WatchButton")
+        ctrl = $controller("WatchProjectButton")
         ctrl.project = project
         ctrl.showWatchOptions = true
 
-        mocks.tgWatchButton.unwatch.withArgs(project.get('id')).promise().reject()
+        mocks.tgWatchProjectButton.unwatch.withArgs(project.get('id')).promise().reject()
 
         ctrl.unwatch().finally () ->
             expect(mocks.tgConfirm.notify.withArgs("error")).to.be.calledOnce

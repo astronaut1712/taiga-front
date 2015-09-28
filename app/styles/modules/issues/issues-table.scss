@@ -27,6 +27,9 @@
         div {
             cursor: pointer;
         }
+        .votes {
+            color: $gray;
+        }
     }
     .table-main {
         @extend %small;
@@ -50,6 +53,16 @@
         flex-shrink: 0;
         text-align: center;
         width: 75px;
+    }
+    .votes {
+        color: $gray;
+        flex-basis: 75px;
+        flex-shrink: 0;
+        text-align: center;
+        width: 75px;
+        &.inactive {
+            color: $gray-light;
+        }
     }
     .subject {
         overflow: hidden;
@@ -125,5 +138,3 @@
         }
     }
 }
-
-

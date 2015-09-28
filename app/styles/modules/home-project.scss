@@ -22,6 +22,12 @@
     .like-watch-container {
         margin-left: auto;
     }
+    .track-buttons-container {
+        display: flex;
+    }
+    .like-button {
+        margin-right: .75rem;
+    }
     .track-container {
         @include list-itemtype-track;
     }

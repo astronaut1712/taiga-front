@@ -70,7 +70,7 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
         section.ticket-assigned-to(tg-assigned-to, ng-model="us", required-perm="modify_us")
         
         section.track-buttons-container.ticket-track-buttons
-            div.like-button
+            div.vote-button
                 tg-vote-button(item="us", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
 
             div.ticket-watchers(tg-watchers, ng-model="us", required-perm="modify_us")

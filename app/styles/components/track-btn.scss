@@ -40,16 +40,6 @@
                 fill: $primary;
             }
         }
-        &:hover {
-            .track-inner {
-                background: $red;
-                color: $whitish;
-                transition: background .3s;
-            }
-            path {
-                fill: $red-light;
-            }
-        }
     }
     &.watch-container {
         margin-right: 1rem;
@@ -81,8 +71,30 @@
     }
 }
 
+.vote-button,
 .like-button {
-    margin-right: .75rem;
+    &.active {
+        &:hover {
+            .track-inner {
+                background: $red;
+                color: $whitish;
+                transition: background .3s;
+            }
+            path {
+                fill: $red-light;
+            }
+        }
+    }
+}
+
+.vote-button {
+    &.active {
+        &:hover {
+            path {
+                fill: $red-light;
+            }
+        }
+    }
 }
 
 .watch-options {

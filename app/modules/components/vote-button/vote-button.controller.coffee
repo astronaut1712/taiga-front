@@ -15,7 +15,7 @@ class VoteButtonController
             @._downvote()
 
     _upvote: ->
-        @.onUpvote().then () =>
+        @.onUpvote().then =>
             @.showTextWhenMouseIsLeave()
 
     _downvote: ->

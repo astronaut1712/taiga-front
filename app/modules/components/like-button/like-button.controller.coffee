@@ -21,13 +21,13 @@ class LikeButtonController
 
     _like: ->
         return @likeButtonService.like(@.project.get('id'))
-            .then () =>
+            .then =>
                 @.showTextWhenMouseIsLeave()
-            .catch () =>
+            .catch =>
                 @confirm.notify("error")
 
     _unlike: ->
-        return @likeButtonService.unlike(@.project.get('id')).catch () =>
+        return @likeButtonService.unlike(@.project.get('id')).catch =>
             @confirm.notify("error")
 
 angular.module("taigaComponents").controller("LikeButton", LikeButtonController)

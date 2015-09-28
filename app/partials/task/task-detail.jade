@@ -52,21 +52,26 @@ div.wrapper(ng-controller="TaskDetailController as ctrl",
         tg-attachments(ng-model="task", type="task")
         tg-history(ng-model="task", type="task")
 
-    sidebar.menu-secondary.sidebar
-        section.us-status
-            h1(tg-task-status-display, ng-model="task")
-            div.us-created-by(tg-created-by-display, ng-model="task")
-            div.duty-data-container
-                div.duty-data(tg-task-status-button, ng-model="task")
+    sidebar.menu-secondary.sidebar.ticket-data
+    
+        section.status
+            
+            .ticket-title(tg-task-status-display, ng-model="task")
+            
+            .ticket-created-by(tg-created-by-display, ng-model="task")
+            
+            .ticket-data-container
+                .ticket-status(tg-task-status-button, ng-model="task")
 
-        section.duty-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
+        section.ticket-assigned-to(tg-assigned-to, ng-model="task", required-perm="modify_task")
+        
+        section.track-buttons-container.ticket-track-buttons
+            div.vote-button
+                tg-vote-button(item="task", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
 
-        section.vote
-            tg-vote-button(item="task", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
+            div.ticket-watchers(tg-watchers, ng-model="task", required-perm="modify_task")
 
-        section.watchers(tg-watchers, ng-model="task", required-perm="modify_task")
-
-        section.us-detail-settings
+        section.ticket-detail-settings
            tg-task-is-iocaine-button(ng-model="task")
            tg-block-button(tg-check-permission="modify_task", ng-model="task")
            tg-delete-button(tg-check-permission="delete_task",

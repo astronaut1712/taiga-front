@@ -47,24 +47,25 @@ div.wrapper(ng-controller="IssueDetailController as ctrl",
         tg-attachments(ng-model="issue", type="issue")
         tg-history(ng-model="issue", type="issue")
 
-    sidebar.menu-secondary.sidebar
-        section.us-status
-            h1(tg-issue-status-display, ng-model="issue")
-            tg-created-by-display.us-created-by(ng-model="issue")
-            div.duty-data-container
-                div.duty-data(tg-issue-type-button, ng-model="issue")
-                div.duty-data(tg-issue-severity-button, ng-model="issue")
-                div.duty-data(tg-issue-priority-button, ng-model="issue")
-                div.duty-data(tg-issue-status-button, ng-model="issue")
+    sidebar.menu-secondary.sidebar.ticket-data
+        section.status
+            .ticket-title(tg-issue-status-display, ng-model="issue")
+        tg-created-by-display.ticket-created-by(ng-model="issue")
+        div.ticket-data-container
+            div.ticket-status(tg-issue-type-button, ng-model="issue")
+            div.ticket-status(tg-issue-severity-button, ng-model="issue")
+            div.ticket-status(tg-issue-priority-button, ng-model="issue")
+            div.ticket-status(tg-issue-status-button, ng-model="issue")
 
-        section.duty-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
+        section.ticket-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
 
-        section.vote
-            tg-vote-button(item="issue", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
+        section.track-buttons-container.ticket-track-buttons
+            div.vote-button
+                tg-vote-button(item="issue", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
 
-        section.watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
+            div.ticket-watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
 
-        section.us-detail-settings
+        section.ticket-detail-settings
            tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")
            tg-block-button(tg-check-permission="modify_issue", ng-model="issue")
            tg-delete-button(tg-check-permission="delete_issue",

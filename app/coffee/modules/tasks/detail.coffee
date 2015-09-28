@@ -220,7 +220,7 @@ module.directive("tgTaskStatusDisplay", ["$tgTemplate", "$compile", TaskStatusDi
 ## Task status button directive
 #############################################################################
 
-TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate) ->
+TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $compile, $translate, $template) ->
     # Display the status of Task and you can edit it.
     #
     # Example:
@@ -231,21 +231,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
     #   - scope.statusById object
     #   - $scope.project.my_permissions
 
-    template = _.template("""
-    <div class="status-data <% if(editable){ %>clickable<% }%>">
-        <span class="level" style="background-color:<%- status.color %>"></span>
-        <span class="status-status"><%- status.name %></span>
-        <% if(editable){ %><span class="icon icon-arrow-bottom"></span><% }%>
-        <span class="level-name" translate="COMMON.FIELDS.STATUS"></span>
-
-        <ul class="popover pop-status">
-            <% _.each(statuses, function(st) { %>
-            <li><a href="" class="status" title="<%- st.name %>"
-                   data-status-id="<%- st.id %>"><%- st.name %></a></li>
-            <% }); %>
-        </ul>
-    </div>
-    """)
+    template = $template.get("us/us-status-button.html", true)
 
     link = ($scope, $el, $attrs, $model) ->
         isEditable = ->
@@ -313,7 +299,7 @@ TaskStatusButtonDirective = ($rootScope, $repo, $confirm, $loading, $qqueue, $co
     }
 
 module.directive("tgTaskStatusButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQqueue",
-                                        "$compile", "$translate", TaskStatusButtonDirective])
+                                        "$compile", "$translate", "$tgTemplate", TaskStatusButtonDirective])
 
 
 TaskIsIocaineButtonDirective = ($rootscope, $tgrepo, $confirm, $loading, $qqueue, $compile) ->

@@ -223,11 +223,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
             html = $compile(template(ctx))($scope)
             $el.html(html)
 
-            if isEditable() and watchers.length == 0
-                $el.find(".title").text("Add watchers")
-                $el.find(".watchers-header").addClass("no-watchers")
-
-        $el.on "click", ".icon-delete", (event) ->
+        $el.on "click", ".js-delete-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             target = angular.element(event.currentTarget)
@@ -244,7 +240,7 @@ WatchersDirective = ($rootscope, $confirm, $repo, $qqueue, $template, $compile, 
 
                 deleteWatcher(watcherIds)
 
-        $el.on "click", ".add-watcher", (event) ->
+        $el.on "click", ".js-add-watcher", (event) ->
             event.preventDefault()
             return if not isEditable()
             $scope.$apply ->

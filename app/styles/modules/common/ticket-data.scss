@@ -169,7 +169,7 @@
         padding: .25rem;
         text-transform: uppercase;
         transition: background .25s;
-        &:hover {
+        &.is-hover {
             background: darken($whitish, 10%);
         }
     }

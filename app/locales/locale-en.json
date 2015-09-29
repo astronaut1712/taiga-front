@@ -160,14 +160,14 @@
             "WATCHING": "Watching",
             "UNWATCH": "Unwatch",
             "BUTTON_TITLE": "Watch/Unwatch this item",
-            "COUNTER_TITLE": "Number of watchers for this item"
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}"
         },
         "VOTE_BUTTON": {
             "UPVOTE": "Upvote",
             "UPVOTED": "Upvoted",
             "DOWNVOTE": "Downvote",
             "BUTTON_TITLE": "Upvote/Downvote this item",
-            "COUNTER_TITLE": "Number of votes for this item"
+            "COUNTER_TITLE": "{total, plural, one{one vote} other{# votes}}"
         },
         "CUSTOM_ATTRIBUTES": {
             "CUSTOM_FIELDS": "Custom Fields",
@@ -757,13 +757,13 @@
             "LIKED": "Liked",
             "UNLIKE": "Unlike",
             "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "Number of likes for this project"
+            "COUNTER_TITLE": "{total, plural, one{one like} other{# likes}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",
             "WATCH": "Watch",
             "WATCHING": "Watching",
-            "COUNTER_TITLE": "Number of watchers for this project",
+            "COUNTER_TITLE": "{total, plural, one{one watcher} other{# watchers}}",
             "OPTIONS": {
                 "NOTIFY_ALL": "Receive all notifications",
                 "NOTIFY_ALL_TITLE": "Receive all notifications for this project",

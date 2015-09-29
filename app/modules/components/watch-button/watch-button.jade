@@ -23,5 +23,6 @@ a.track-button.watch-button.watch-container(
             translate="COMMON.WATCH_BUTTON.UNWATCH"
         )
 
-    span.track-button-counter(title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE' | translate }}")
+    span.track-button-counter(title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.watchers.length}:'messageformat' }}")
+
         | {{ vm.item.watchers.length }}

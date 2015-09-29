@@ -1,8 +1,15 @@
 div.row.us-item-row(ng-repeat="us in userstories track by us.id", tg-bind-scope, ng-class="{blocked: us.is_blocked}", tg-class-permission="{'readonly': '!modify_us'}")
+    div.input
+        input(tg-check-permission="modify_us", type="checkbox", name="")
+    div.votes(
+        ng-class="{'inactive': !us.votes, 'is-voted': us.is_voted}"
+        title="Current votes: {{us.votes}}"
+    )
+        span.icon.icon-caret-up
+        span {{ ::us.votes }}
     div.user-stories
         div.tags-block(tg-colorize-tags="us.tags", tg-colorize-tags-type="backlog")
         div.user-story-name
-            input(tg-check-permission="modify_us", type="checkbox", name="")
             a.clickable(tg-nav="project-userstories-detail:project=project.slug,ref=us.ref",
                         tg-nav-get-params="{\"no-milestone\": 1}",
                         title="#{{ us.ref }} {{ us.subject }}")
@@ -14,7 +21,6 @@ div.row.us-item-row(ng-repeat="us in userstories track by us.id", tg-bind-scope,
                 a.icon.icon-delete(tg-check-permission="delete_us", href="",
                                    ng-click="ctrl.deleteUserStory(us)", title="{{'COMMON.DELETE' | translate}}")
 
-    div.votes {{ ::us.votes }}
     div.status(tg-us-status="us" on-update="ctrl.updateUserStoryStatus()")
         a.us-status(href="", title="{{'BACKLOG.STATUS_NAME' | translate}}")
             span.us-status-bind

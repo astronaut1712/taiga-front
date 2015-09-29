@@ -63,6 +63,9 @@
         &.inactive {
             color: $gray-light;
         }
+        &.is-voted {
+            color: $primary-light;
+        }
     }
     .subject {
         overflow: hidden;

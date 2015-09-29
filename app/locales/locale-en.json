@@ -1138,6 +1138,7 @@
                 "PRIORITY": "Priority",
                 "SUBJECT": "Subject",
                 "VOTES": "Votes",
+                "CURRENT_VOTES": "Current votes",
                 "STATUS": "Status",
                 "CREATED": "Created",
                 "ASSIGNED_TO": "Assigned to"

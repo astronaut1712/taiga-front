@@ -24,6 +24,6 @@ a.track-button.vote-button.vote-container(
         )
 
     span.track-button-counter(
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.votes}:'messageformat' }}"
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.votes||0}:'messageformat' }}"
     )
         | {{ vm.item.votes }}

@@ -22,5 +22,5 @@ a.track-button.like-button.like-container(
             translate="PROJECT.LIKE_BUTTON.UNLIKE"
         )
 
-    span.track-button-counter(title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"likes\")}:'messageformat' }}")
+    span.track-button-counter(title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"likes\")||0}:'messageformat' }}")
         | {{ vm.project.get('likes') }}

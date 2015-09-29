@@ -757,7 +757,7 @@
             "LIKED": "Liked",
             "UNLIKE": "Unlike",
             "BUTTON_TITLE": "Like or unlike this project",
-            "COUNTER_TITLE": "{total, plural, one{one like} other{# likes}}"
+            "COUNTER_TITLE": "{total, plural, one{one fan} other{# fans}}"
         },
         "WATCH_BUTTON": {
             "BUTTON_TITLE": "Watch this project and set notification policy",

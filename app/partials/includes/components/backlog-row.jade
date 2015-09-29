@@ -11,7 +11,7 @@ div.row.us-item-row(
         )
     div.votes(
         ng-class="{'inactive': !us.votes, 'is-voted': us.is_voted}"
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.votes}:'messageformat' }}"
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.votes||0}:'messageformat' }}"
     )
         span.icon.icon-caret-up
         span {{ ::us.votes }}

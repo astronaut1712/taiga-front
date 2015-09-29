@@ -65,7 +65,7 @@ div.list-itemtype-ticket
     div.list-itemtype-track
         span.list-itemtype-track-likers(
             ng-class="{'active': vm.item.get('is_voted')}",
-            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_votes\")}:'messageformat' }}"
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_votes\")||0}:'messageformat' }}"
         )
             span.icon
                 include ../../../../svg/upvote.svg
@@ -73,7 +73,7 @@ div.list-itemtype-ticket
 
         span.list-itemtype-track-watchers(
             ng-class="{'active': vm.item.get('is_watched')}"
-            title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")}:'messageformat' }}"
+            title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
             span.icon
                 include ../../../../svg/watch.svg

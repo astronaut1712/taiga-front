@@ -15,7 +15,7 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(tg-listitem-priority="issue")
         div.votes(
             ng-class="{'inactive': !issue.votes, 'is-voted': issue.is_voted}"
-            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.votes}:'messageformat' }}"
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.votes||0}:'messageformat' }}"
         )
             span.icon.icon-caret-up
             span {{ ::issue.votes }}

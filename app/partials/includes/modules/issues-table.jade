@@ -15,19 +15,25 @@ section.issues-table.basic-table(ng-class="{empty: !issues.length}")
         div.level-field(tg-listitem-priority="issue")
         div.votes(
             ng-class="{'inactive': !issue.votes, 'is-voted': issue.is_voted}"
-            title="{'ISSUES.TABLE.CURRENT_VOTES' | translate}} {{issue.votes}}"
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:issue.votes}:'messageformat' }}"
         )
             span.icon.icon-caret-up
             span {{ ::issue.votes }}
         div.subject
-            a(href="", tg-nav="project-issues-detail:project=project.slug,ref=issue.ref",
-              title="#{{ ::issue.ref }} {{ ::issue.subject }}")
+            a(
+                href=""
+                tg-nav="project-issues-detail:project=project.slug,ref=issue.ref"
+                title="#{{ ::issue.ref }} {{ ::issue.subject }}"
+            )
                 span(tg-bo-ref="issue.ref")
                 span(ng-bind="issue.subject")
 
 
         div.issue-field(tg-issue-status-inline-edition="issue")
-            a.issue-status(href="", title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}")
+            a.issue-status(
+                href=""
+                title="{{'ISSUES.TABLE.TITLE_ACTION_CHANGE_STATUS' | translate}}"
+            )
                 span.issue-status-bind
                 span.icon.icon-arrow-bottom(tg-check-permission="modify_issue")
 
@@ -42,6 +48,9 @@ section.empty.empty-issues(ng-class="{hidden: issues.length}")
     span.icon.icon-issues
     span.title(translate="ISSUES.TABLE.EMPTY.TITLE")
     span(translate="ISSUES.TABLE.EMPTY.SUBTITLE")
-    a(href="", ng-click="ctrl.addNewIssue()",
-      title="{{'ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE' | translate}}",
-      translate="ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE")
+    a(
+        href=""
+        ng-click="ctrl.addNewIssue()"
+        title="{{'ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE' | translate}}"
+        translate="ISSUES.TABLE.EMPTY.ACTION_CREATE_ISSUE"
+    )

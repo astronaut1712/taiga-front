@@ -23,5 +23,7 @@ a.track-button.vote-button.vote-container(
             translate="COMMON.VOTE_BUTTON.DOWNVOTE"
         )
 
-    span.track-button-counter(title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.votes}:'messageformat' }}")
+    span.track-button-counter(
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.votes}:'messageformat' }}"
+    )
         | {{ vm.item.votes }}

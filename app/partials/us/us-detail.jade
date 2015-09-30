@@ -1,17 +1,23 @@
 doctype html
 
-div.wrapper(ng-controller="UserStoryDetailController as ctrl",
-            ng-init="section='backlog-kanban'")
+div.wrapper(
+    ng-controller="UserStoryDetailController as ctrl",
+    ng-init="section='backlog-kanban'"
+)
     tg-project-menu
+
     div.main.us-detail
         div.us-detail-header.header-with-actions
             include ../includes/components/mainTitle
             .action-buttons
                 a.button-gray(
-                    tg-check-permission="view_milestones",
-                    href="", title="{{'US.TITLE_LINK_TASKBOARD' | translate}}",
-                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug",
-                    ng-if="sprint && project.is_backlog_activated", translate="US.LINK_TASKBOARD")
+                    href=""
+                    tg-check-permission="view_milestones"
+                    tg-nav="project-taskboard:project=project.slug,sprint=sprint.slug"
+                    ng-if="sprint && project.is_backlog_activated"
+                    title="{{'US.TITLE_LINK_TASKBOARD' | translate}}"
+                    translate="US.LINK_TASKBOARD"
+                )
 
         section.us-story-main-data
             div.us-title(ng-class="{blocked: us.is_blocked}")
@@ -21,32 +27,50 @@ div.wrapper(ng-controller="UserStoryDetailController as ctrl",
 
                 p.us-related-task(ng-if="us.origin_issue")
                     | {{ 'US.PROMOTED'|translate }}
-                    a(tg-check-permission="view_us", href="", title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}",
-                      tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
-                      tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject")
+                    a(
+                        href=""
+                        tg-check-permission="view_us"
+                        tg-nav="project-issues-detail:project=project.slug,ref=us.origin_issue.ref"
+                        tg-bo-title="'#' + us.origin_issue.ref + ' ' + us.origin_issue.subject"
+                        title="{{'US.TITLE_LINK_GO_TO_ISSUE' | translate}}"
+                    )
                         span(tg-bo-ref="us.origin_issue.ref")
 
                 p.external-reference(ng-if="us.external_reference")
                     | {{ 'US.EXTERNAL_REFERENCE'|translate }}
-                    a(target="_blank", tg-bo-href="us.external_reference[1]",
-                      title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}")
+                    a(
+                        tg-bo-href="us.external_reference[1]",
+                        title="{{'US.GO_TO_EXTERNAL_REFERENCE' | translate}}"
+                        target="_blank"
+                    )
                         span {{ us.external_reference[1] }}
 
                 p.block-desc-container(ng-show="us.is_blocked")
                     span.block-description-title(translate="COMMON.BLOCKED")
                     span.block-description(ng-bind="us.blocked_note || ('US.BLOCKED' | translate)")
                 div.issue-nav
-                    a.icon.icon-arrow-left(ng-show="previousUrl", tg-bo-href="previousUrl",
-                                           title="{{'US.PREVIOUS' | translate}}")
-                    a.icon.icon-arrow-right(ng-show="nextUrl", tg-bo-href="nextUrl",
-                                            title="{{'US.NEXT' | translate}}")
+                    a.icon.icon-arrow-left(
+                        ng-show="previousUrl"
+                        tg-bo-href="previousUrl"
+                        title="{{'US.PREVIOUS' | translate}}"
+                    )
+                    a.icon.icon-arrow-right(
+                        ng-show="nextUrl"
+                        tg-bo-href="nextUrl"
+                        title="{{'US.NEXT' | translate}}"
+                    )
 
             div.tags-block(tg-tag-line, ng-model="us", required-perm="modify_us")
 
         section.duty-content(tg-editable-description, ng-model="us", required-perm="modify_us")
 
         // Custom Fields
-        tg-custom-attributes-values(ng-model="us", type="userstory", project="project", required-edition-perm="modify_us")
+        tg-custom-attributes-values(
+            ng-model="us"
+            type="userstory"
+            project="project"
+            required-edition-perm="modify_us"
+        )
 
         include ../includes/modules/related-tasks
 

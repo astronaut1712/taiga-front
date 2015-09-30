@@ -170,6 +170,28 @@ class TaskDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return @rs.tasks.downvote(@scope.taskId).then(onSuccess, onError)
 
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.watch(@scope.taskId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadTask()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.tasks.unwatch(@scope.taskId).then(onSuccess, onError)
+
 module.controller("TaskDetailController", TaskDetailController)
 
 

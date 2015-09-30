@@ -169,6 +169,28 @@ class IssueDetailController extends mixOf(taiga.Controller, taiga.PageMixin)
 
         return @rs.issues.downvote(@scope.issueId).then(onSuccess, onError)
 
+    ###
+    # Note: This methods (onWatch() and onUnwatch()) are related to tg-watch-button.
+    #       See app/modules/components/watch-button for more info
+    ###
+    onWatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.watch(@scope.issueId).then(onSuccess, onError)
+
+    onUnwatch: ->
+        onSuccess = =>
+            @.loadIssue()
+            @rootscope.$broadcast("object:updated")
+        onError = =>
+            @confirm.notify("error")
+
+        return @rs.issues.unwatch(@scope.issueId).then(onSuccess, onError)
+
 module.controller("IssueDetailController", IssueDetailController)
 
 

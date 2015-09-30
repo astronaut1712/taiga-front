@@ -86,6 +86,17 @@
     }
 }
 
+.vote-button {
+    &.active {
+        &.is-hover {
+            svg {
+                transform: rotate(180deg);
+                transition: transform .2s linear;
+            }
+        }
+    }
+}
+
 .watch-options {
     animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) alternate;
     background: rgba($black, .9);

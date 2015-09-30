@@ -11,28 +11,6 @@
             }
         }
     }
-    .ticket-detail-progress-bar {
-        background: $grayer;
-        height: 26px;
-        margin-bottom: 1rem;
-        position: relative;
-        .current-progress {
-            background: $primary-light;
-            height: 26px;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 60%;
-        }
-        .tasks-completed {
-            @extend %small;
-            @extend %light;
-            color: $white;
-            position: absolute;
-            right: 10px;
-            top: 3px;
-        }
-    }
     .ticket-data-container {
         @extend %small;
         @extend %normal;
@@ -113,12 +91,17 @@
         padding: .25rem;
         text-transform: uppercase;
         transition: background .25s;
-        &.is-hover {
+        &:hover {
             background: darken($whitish, 10%);
         }
     }
     .track-button {
         width: 100%;
+    }
+    .active {
+        .track-button-counter {
+            background: rgba($grayer, .5);
+        }
     }
     .track-button-counter {
         @extend %large;
@@ -126,8 +109,31 @@
         color: $whitish;
         padding: 0 .5rem;
     }
-    .like-button {
-        margin: 0;
+    .vote-button {
+        margin-bottom: .3rem;
+    }
+    .watch-button {
+        border-bottom: 0;
+    }
+    .ticket-watchers {
+        margin: .5rem 0;
+    }
+    .add-watcher {
+        display: block;
+        margin: .5rem;
+        .icon {
+            background: rgba($grayer, .25);
+            color: $whitish;
+            margin-right: .5rem;
+            padding: .25rem;
+        }
+        &:hover {
+            .icon {
+                background: $primary-light;
+                color: $whitish;
+                transition: background .3s linear;
+            }
+        }
     }
 }
 

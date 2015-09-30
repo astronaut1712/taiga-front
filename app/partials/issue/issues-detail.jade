@@ -60,10 +60,17 @@ div.wrapper(ng-controller="IssueDetailController as ctrl",
         section.ticket-assigned-to(tg-assigned-to, ng-model="issue", required-perm="modify_issue")
 
         section.track-buttons-container.ticket-track-buttons
-            div.vote-button
-                tg-vote-button(item="issue", on-upvote="ctrl.onUpvote", on-downvote="ctrl.onDownvote")
-
-            div.ticket-watchers(tg-watchers, ng-model="issue", required-perm="modify_issue")
+            
+            tg-vote-button.vote-button(
+                item="issue"
+                on-upvote="ctrl.onUpvote"
+                on-downvote="ctrl.onDownvote"
+            )
+            div.ticket-watchers(
+                tg-watchers
+                ng-model="issue"
+                required-perm="modify_issue"
+            )
 
         section.ticket-detail-settings
            tg-promote-issue-to-us-button(tg-check-permission="add_us", ng-model="issue")

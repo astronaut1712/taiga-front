@@ -465,6 +465,14 @@
         flex-grow: 0;
         width: 600px;
     }
+    .user-list-single {
+        &:hover {
+            background: lighten($primary, 58%);
+            cursor: pointer;
+            transition: background .3s linear;
+            transition-delay: .2s;
+        }
+    }
     .more-watchers {
         @extend %title;
         @extend %medium;

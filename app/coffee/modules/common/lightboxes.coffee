@@ -573,7 +573,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
 
             html = usersTemplate(ctx)
             html = $compile(html)($scope)
-            $el.find("div.watchers").html(html)
+            $el.find(".ticket-watchers").html(html)
 
         closeLightbox = () ->
             lightboxKeyboardNavigationService.stop()
@@ -597,7 +597,7 @@ WatchersLightboxDirective = ($repo, lightboxService, lightboxKeyboardNavigationS
             render(users)
             $el.find("input").focus()
 
-        $el.on "click", ".watcher-single", debounce 2000, (event) ->
+        $el.on "click", ".user-list-single", debounce 2000, (event) ->
             closeLightbox()
 
             event.preventDefault()

@@ -19,15 +19,19 @@ div.wrapper
                 //- Like and wacht buttons for anonymous users
                 div.track-container(ng-if="!vm.user")
                     .list-itemtype-track
-                        span.list-itemtype-track-likers(title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"likes\")||0}:'messageformat' }}")
+                        span.list-itemtype-track-likers(
+                            title="{{ 'PROJECT.LIKE_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_fans\")||0}:'messageformat' }}"
+                        )
                             span.icon
                                 include ../../../svg/like.svg
-                            span {{ ::vm.project.get('likes') }}
+                            span {{ ::vm.project.get('total_fans') }}
 
-                        span.list-itemtype-track-watchers(title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"watchers\").count()||0}:'messageformat' }}")
+                        span.list-itemtype-track-watchers(
+                            title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
+                        )
                             span.icon
                                 include ../../../svg/watch.svg
-                            span {{ ::vm.project.get('watchers').count() }}
+                            span {{ ::vm.project.get('total_watchers') }}
 
             p.description {{vm.project.get('description')}}
 

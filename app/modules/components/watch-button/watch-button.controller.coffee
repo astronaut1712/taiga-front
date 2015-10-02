@@ -9,7 +9,7 @@ class WatchButtonController
         @.isMouseOver = false
 
     toggleWatch: ->
-        if not @.item.is_watched
+        if not @.item.is_watcher
             @._watch()
         else
             @._unwatch()

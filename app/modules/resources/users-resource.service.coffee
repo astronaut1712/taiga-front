@@ -47,7 +47,7 @@ Resource = (urlsService, http, paginateResponseService) ->
     service.getLikes = (userId, page, type, q) ->
         url = urlsService.resolve("user-likes", userId)
 
-        params = {action: "vote"}
+        params = {}
         params.page = page if page?
         params.type = type if type?
         params.q = q if q?
@@ -60,7 +60,7 @@ Resource = (urlsService, http, paginateResponseService) ->
     service.getWatched = (userId, page, type, q) ->
         url = urlsService.resolve("user-watched", userId)
 
-        params = {action: "watch"}
+        params = {}
         params.page = page if page?
         params.type = type if type?
         params.q = q if q?

@@ -1,4 +1,4 @@
-describe "WatchProjectButton", ->
+describe.only "WatchProjectButton", ->
     $provide = null
     $controller = null
     mocks = {}

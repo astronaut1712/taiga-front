@@ -10,31 +10,31 @@ class LikeProjectButtonService extends taiga.Service
                 .get('all')
                 .findIndex (project) -> project.get('id') == projectId
 
-    _updateProjects: (projectId, is_liked) ->
+    _updateProjects: (projectId, isFan) ->
         projectIndex = @._getProjectIndex(projectId)
         projects = @currentUserService.projects
             .get('all')
             .update projectIndex, (project) ->
 
-                likes = project.get("likes")
+                totalFans = project.get("total_fans")
 
-                if is_liked then likes++ else likes--
+                if isFan then totalFans++ else totalFans--
 
                 return project.merge({
-                    is_liked: is_liked,
-                    likes: likes
+                    is_fan: isFan,
+                    total_fans: totalFans
                 })
 
         @currentUserService.setProjects(projects)
 
-    _updateCurrentProject: (is_liked) ->
-        likes = @projectService.project.get("likes")
+    _updateCurrentProject: (isFan) ->
+        totalFans = @projectService.project.get("total_fans")
 
-        if is_liked then likes++ else likes--
+        if isFan then totalFans++ else totalFans--
 
         project = @projectService.project.merge({
-            is_liked: is_liked,
-            likes: likes
+            is_fan: isFan,
+            total_fans: totalFans
         })
 
         @projectService.setProject(project)

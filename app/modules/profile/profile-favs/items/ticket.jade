@@ -64,15 +64,15 @@ div.list-itemtype-ticket
 
     div.list-itemtype-track
         span.list-itemtype-track-likers(
-            ng-class="{'active': vm.item.get('is_voted')}",
-            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_votes\")||0}:'messageformat' }}"
+            ng-class="{'active': vm.item.get('is_voter')}",
+            title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_voters\")||0}:'messageformat' }}"
         )
             span.icon
                 include ../../../../svg/upvote.svg
-            span {{ ::vm.item.get('total_votes') }}
+            span {{ ::vm.item.get('total_voters') }}
 
         span.list-itemtype-track-watchers(
-            ng-class="{'active': vm.item.get('is_watched')}"
+            ng-class="{'active': vm.item.get('is_watcher')}"
             title="{{ 'COMMON.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.get(\"total_watchers\")||0}:'messageformat' }}"
         )
             span.icon

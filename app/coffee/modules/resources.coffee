@@ -39,8 +39,8 @@ urls = {
     "users-cancel-account": "/users/cancel"
     "user-stats": "/users/%s/stats"
     "user-contacts": "/users/%s/contacts"
-    "user-likes": "/users/%s/favourites"
-    "user-watched": "/users/%s/favourites"
+    "user-likes": "/users/%s/liked"
+    "user-watched": "/users/%s/watched"
 
     # User - Notification
     "permissions": "/permissions"

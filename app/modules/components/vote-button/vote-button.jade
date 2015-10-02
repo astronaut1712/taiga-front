@@ -2,7 +2,7 @@ a.track-button.vote-button.vote-container(
     href=""
     title="{{ 'COMMON.VOTE_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleVote()"
-    ng-class="{'active': vm.item.is_voted, 'is-hover': vm.item.is_voted && vm.isMouseOver}"
+    ng-class="{'active': vm.item.is_voter, 'is-hover': vm.item.is_voter && vm.isMouseOver}"
     ng-mouseover="vm.showTextWhenMouseIsOver()"
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
@@ -11,19 +11,19 @@ a.track-button.vote-button.vote-container(
         span.track-icon
             include ../../../svg/upvote.svg
         span(
-            ng-if="!vm.item.is_voted",
+            ng-if="!vm.item.is_voter",
             translate="COMMON.VOTE_BUTTON.UPVOTE"
         )
         span(
-            ng-if="vm.item.is_voted && !vm.isMouseOver",
+            ng-if="vm.item.is_voter && !vm.isMouseOver",
             translate="COMMON.VOTE_BUTTON.UPVOTED"
         )
         span(
-            ng-if="vm.item.is_voted && vm.isMouseOver",
+            ng-if="vm.item.is_voter && vm.isMouseOver",
             translate="COMMON.VOTE_BUTTON.DOWNVOTE"
         )
 
     span.track-button-counter(
-        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.votes||0}:'messageformat' }}"
+        title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:vm.item.total_voters||0}:'messageformat' }}"
     )
-        | {{ vm.item.votes }}
+        | {{ vm.item.total_voters }}

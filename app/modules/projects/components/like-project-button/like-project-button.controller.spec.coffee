@@ -43,7 +43,7 @@ describe "LikeProjectButton", ->
     it "toggleLike false -> true", () ->
         project = Immutable.fromJS({
             id: 3,
-            is_liked: false
+            is_fan: false
         })
 
         ctrl = $controller("LikeProjectButton")
@@ -58,7 +58,7 @@ describe "LikeProjectButton", ->
     it "toggleLike false -> true, notify error", (done) ->
         project = Immutable.fromJS({
             id: 3,
-            is_liked: false
+            is_fan: false
         })
 
         ctrl = $controller("LikeProjectButton")
@@ -72,7 +72,7 @@ describe "LikeProjectButton", ->
 
     it "toggleLike true -> false", () ->
         project = Immutable.fromJS({
-            is_liked: true
+            is_fan: true
         })
 
         ctrl = $controller("LikeProjectButton")
@@ -86,7 +86,7 @@ describe "LikeProjectButton", ->
 
     it "toggleLike true -> false, notify error", (done) ->
         project = Immutable.fromJS({
-            is_liked: true
+            is_fan: true
         })
 
         ctrl = $controller("LikeProjectButton")

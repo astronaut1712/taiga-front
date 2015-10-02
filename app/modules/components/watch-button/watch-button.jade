@@ -2,7 +2,7 @@ a.track-button.watch-button.watch-container(
     href=""
     title="{{ 'COMMON.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleWatch()"
-    ng-class="{'active': vm.item.is_watched, 'is-hover': vm.item.is_watched && vm.isMouseOver}"
+    ng-class="{'active': vm.item.is_watcher, 'is-hover': vm.item.is_watcher && vm.isMouseOver}"
     ng-mouseover="vm.showTextWhenMouseIsOver()"
     ng-mouseleave="vm.showTextWhenMouseIsLeave()"
 )
@@ -11,15 +11,15 @@ a.track-button.watch-button.watch-container(
         span.track-icon
             include ../../../svg/watch.svg
         span(
-            ng-if="!vm.item.is_watched",
+            ng-if="!vm.item.is_watcher",
             translate="COMMON.WATCH_BUTTON.WATCH"
         )
         span(
-            ng-if="vm.item.is_watched && !vm.isMouseOver",
+            ng-if="vm.item.is_watcher && !vm.isMouseOver",
             translate="COMMON.WATCH_BUTTON.WATCHING"
         )
         span(
-            ng-if="vm.item.is_watched && vm.isMouseOver",
+            ng-if="vm.item.is_watcher && vm.isMouseOver",
             translate="COMMON.WATCH_BUTTON.UNWATCH"
         )
 

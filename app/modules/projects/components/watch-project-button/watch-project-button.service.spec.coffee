@@ -24,20 +24,20 @@ describe "tgWatchProjectButtonService", ->
                 all: [
                     {
                         id: 4,
-                        watchers: [],
-                        is_watched: false,
+                        total_watchers: 0,
+                        is_watcher: false,
                         notify_level: null
                     },
                     {
                         id: 5,
-                        watchers: [89],
-                        is_watched: true,
+                        total_watchers: 1,
+                        is_watcher: true,
                         notify_level: 3
                     },
                     {
                         id: 6,
-                        watchers: [],
-                        is_watched: true,
+                        total_watchers: 0,
+                        is_watcher: true,
                         notify_level: null
                     }
                 ]
@@ -82,8 +82,8 @@ describe "tgWatchProjectButtonService", ->
 
         newProject = {
             id: 4,
-            watchers: [89],
-            is_watched: true,
+            total_watchers: 1,
+            is_watcher: true,
             notify_level: notifyLevel
         }
 
@@ -115,8 +115,8 @@ describe "tgWatchProjectButtonService", ->
 
         newProject = {
             id: 5,
-            watchers: [],
-            is_watched: false,
+            total_watchers: 0,
+            is_watcher: false,
             notify_level: null
         }
 

@@ -14,7 +14,7 @@ class LikeProjectButtonController
         @.isMouseOver = false
 
     toggleLike: ->
-        if not @.project.get("is_liked")
+        if not @.project.get("is_fan")
             @._like()
         else
             @._unlike()

@@ -15,40 +15,32 @@ class WatchProjectButtonService extends taiga.Service
                 .findIndex (project) -> project.get('id') == projectId
 
 
-    _updateProjects: (projectId, notifyLevel, is_watched) ->
-        userId = @currentUserService.getUser().get("id")
+    _updateProjects: (projectId, notifyLevel, isWatcher) ->
         projectIndex = @._getProjectIndex(projectId)
 
         projects = @currentUserService.projects
             .get('all')
             .update projectIndex, (project) =>
-                watchers = project.get('watchers')
+                totalWatchers = project.get('total_watchers')
 
-                if is_watched && !watchers.includes(userId)
-                    watchers = watchers.push(userId)
-                else if !is_watched
-                    watchers = watchers.filterNot (watcher) -> watcher == userId
+                if isWatcher then totalWatchers++ else totalWatchers--
 
                 return project.merge({
-                    is_watched: is_watched,
-                    watchers: watchers
+                    is_watcher: isWatcher,
+                    total_watchers: totalWatchers
                     notify_level: notifyLevel
                 })
 
         @currentUserService.setProjects(projects)
 
-    _updateCurrentProject: (notifyLevel, is_watched) ->
-        userId = @currentUserService.getUser().get("id")
-        watchers = @projectService.project.get("watchers")
+    _updateCurrentProject: (notifyLevel, isWatcher) ->
+        totalWatchers = @projectService.project.get("total_watchers")
 
-        if is_watched && !watchers.includes(userId)
-            watchers = watchers.push(userId)
-        else if !is_watched
-            watchers = watchers.filterNot (watcher) -> watcher == userId
+        if isWatcher then totalWatchers++ else totalWatchers--
 
         project = @projectService.project.merge({
-            is_watched: is_watched,
-            watchers: watchers
+            is_watcher: isWatcher,
+            total_watchers: totalWatchers
             notify_level: notifyLevel
         })
 

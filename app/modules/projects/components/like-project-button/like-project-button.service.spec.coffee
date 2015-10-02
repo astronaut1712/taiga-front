@@ -20,18 +20,18 @@ describe "tgLikeProjectButtonService", ->
                 all: [
                     {
                         id: 4,
-                        likes: 2,
-                        is_liked: false
+                        total_fans: 2,
+                        is_fan: false
                     },
                     {
                         id: 5,
-                        likes: 7,
-                        is_liked: true
+                        total_fans: 7,
+                        is_fan: true
                     },
                     {
                         id: 6,
-                        likes: 4,
-                        is_liked: true
+                        total_fans: 4,
+                        is_fan: true
                     }
                 ]
             })
@@ -74,8 +74,8 @@ describe "tgLikeProjectButtonService", ->
 
         newProject = {
             id: 4,
-            likes: 3,
-            is_liked: true
+            total_fans: 3,
+            is_fan: true
         }
 
         mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 0])
@@ -106,8 +106,8 @@ describe "tgLikeProjectButtonService", ->
 
         newProject =  {
             id: 5,
-            likes: 6,
-            is_liked: false
+            total_fans: 6,
+            is_fan: false
         }
 
         mocks.tgProjectService.project =  mocks.tgCurrentUserService.projects.getIn(['all', 1])

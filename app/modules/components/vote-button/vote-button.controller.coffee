@@ -9,7 +9,7 @@ class VoteButtonController
         @.isMouseOver = false
 
     toggleVote: ->
-        if not @.item.is_voted
+        if not @.item.is_voter
             @._upvote()
         else
             @._downvote()

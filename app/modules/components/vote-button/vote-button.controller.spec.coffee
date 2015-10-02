@@ -26,7 +26,7 @@ describe "VoteButton", ->
         $scope = $rootScope.$new()
 
         ctrl = $controller("VoteButton", $scope, {
-            item: {is_voted: false}
+            item: {is_voter: false}
             onUpvote: mocks.onUpvote
             onDownvote: mocks.onDownvote
         })
@@ -41,7 +41,7 @@ describe "VoteButton", ->
         $scope = $rootScope.$new()
 
         ctrl = $controller("VoteButton", $scope, {
-            item: {is_voted: true}
+            item: {is_voter: true}
             onUpvote: mocks.onUpvote
             onDownvote: mocks.onDownvote
         })

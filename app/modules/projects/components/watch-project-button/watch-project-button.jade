@@ -1,17 +1,19 @@
 a.track-button.watch-button.watch-container(
     href="", title="{{ 'PROJECT.WATCH_BUTTON.BUTTON_TITLE' | translate }}"
     ng-click="vm.toggleWatcherOptions()"
-    ng-class="{'active': vm.project.get('is_watched')}"
+    ng-class="{'active': vm.project.get('is_watcher')}"
 )
     span.track-inner
         span.track-icon
             include ../../../../svg/watch.svg
-        span(ng-if="!vm.project.get('is_watched')", translate="PROJECT.WATCH_BUTTON.WATCH")
-        span(ng-if="vm.project.get('is_watched')", translate="PROJECT.WATCH_BUTTON.WATCHING")
+        span(ng-if="!vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCH")
+        span(ng-if="vm.project.get('is_watcher')", translate="PROJECT.WATCH_BUTTON.WATCHING")
         span.icon.icon-arrow-up
 
-    span.track-button-counter(title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"watchers\").count()||0}:'messageformat' }}")
-        | {{ vm.project.get('watchers').size }}
+    span.track-button-counter(
+        title="{{ 'PROJECT.WATCH_BUTTON.COUNTER_TITLE'|translate:{total:vm.project.get(\"total_watchers\")||0}:'messageformat' }}"
+    )
+        | {{ vm.project.get('total_watchers') }}
 
 
 ul.watch-options(
@@ -28,23 +30,23 @@ ul.watch-options(
             href="",
             title="{{ 'PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_ALL_TITLE' | translate }}",
             ng-click="vm.watch(2)",
-            ng-class="{'active': vm.project.get('is_watched') && vm.project.get('notify_level') == 2}"
+            ng-class="{'active': vm.project.get('is_watcher') && vm.project.get('notify_level') == 2}"
         )
             span(translate="PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_ALL")
-            span.watch-check(ng-if="vm.project.get('is_watched') && vm.project.get('notify_level') == 2")
+            span.watch-check(ng-if="vm.project.get('is_watcher') && vm.project.get('notify_level') == 2")
                 include ../../../../svg/check.svg
     li
         a(
             href="",
             title="{{ 'PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_INVOLVED_TITLE' | translate }}",
              ng-click="vm.watch(1)",
-            ng-class="{'active': vm.project.get('is_watched') && vm.project.get('notify_level') == 1}"
+            ng-class="{'active': vm.project.get('is_watcher') && vm.project.get('notify_level') == 1}"
         )
             span(translate="PROJECT.WATCH_BUTTON.OPTIONS.NOTIFY_INVOLVED")
-            span.watch-check(ng-if="vm.project.get('is_watched') && vm.project.get('notify_level') == 1")
+            span.watch-check(ng-if="vm.project.get('is_watcher') && vm.project.get('notify_level') == 1")
                 include ../../../../svg/check.svg
 
-    li(ng-if="vm.project.get('is_watched')")
+    li(ng-if="vm.project.get('is_watcher')")
         a(
             href="",
             title="{{ 'PROJECT.WATCH_BUTTON.OPTIONS.UNWATCH_TITLE' | translate }}",

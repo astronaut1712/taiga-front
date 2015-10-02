@@ -10,7 +10,7 @@ div.row.us-item-row(
               tg-check-permission="modify_us"
         )
     div.votes(
-        ng-class="{'inactive': !us.votes, 'is-voted': us.is_voted}"
+        ng-class="{'inactive': !us.votes, 'is-voted': us.is_voter}"
         title="{{ 'COMMON.VOTE_BUTTON.COUNTER_TITLE'|translate:{total:us.votes||0}:'messageformat' }}"
     )
         span.icon.icon-caret-up

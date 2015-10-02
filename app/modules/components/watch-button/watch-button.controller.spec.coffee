@@ -26,7 +26,7 @@ describe "WatchButton", ->
         $scope = $rootScope.$new()
 
         ctrl = $controller("WatchButton", $scope, {
-            item: {is_watched: false}
+            item: {is_watcher: false}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
         })
@@ -41,7 +41,7 @@ describe "WatchButton", ->
         $scope = $rootScope.$new()
 
         ctrl = $controller("WatchButton", $scope, {
-            item: {is_watched: true}
+            item: {is_watcher: true}
             onWatch: mocks.onWatch
             onUnwatch: mocks.onUnwatch
         })
